@@ -1,0 +1,7 @@
+#!/bin/bash
+if [[-z $1]]:
+  echo "You need to pass the splunk package tarball"
+  exit 1
+else
+  sudo tar -xvzf $1 -C /opt
+  sudo chown -R `whoami`:`whoami` /opt/splunk
