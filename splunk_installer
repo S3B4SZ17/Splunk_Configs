@@ -4,7 +4,8 @@ if [[ -z "$1" ]]; then
   exit 1
 else
   sudo tar -xvzf $1 -C /opt
-  if [[ $? -nq 0 ]]; then
+  if (( $? != 0 )); then
+    >&2 echo "Error while extracting the tarball"
     exit 1
   fi
   sudo chown -R `whoami`:`whoami` /opt/splunk*
